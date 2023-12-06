@@ -1,0 +1,24 @@
+{% extends 'core/base.html' %}
+
+{% block contenido_titulo %}
+    CLIENTE
+{% endblock contenido_titulo %}
+
+{% block contenido %}
+
+    {% for cliente in clientes %}
+        <h2>{{ cliente.apellido }}</h2>
+        <p>{{ cliente.nombre }}</p>
+        {% if cliente.nacimiento %}
+            <p>{{ cliente.nacimiento }}</p>
+        {% else %}
+            <p>No está registrado su fecha de nacimiento</p>
+        {% endif %}
+        {% if cliente.pais_origen %}
+            <p>{{ cliente.pais_origen }}</p>
+        {% else %}
+            <p>No está registrado su país de origen</p>
+        {% endif %}
+    {% endfor %}
+
+{% endblock contenido %}

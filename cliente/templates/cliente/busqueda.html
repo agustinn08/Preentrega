@@ -1,0 +1,24 @@
+{% extends 'core/base.html' %}
+
+{% block contenido_titulo %}
+    BUSQUEDA
+{% endblock contenido_titulo %}
+
+{% block contenido %}
+
+    <h2>Cliente nombre</h2>
+    {% for cliente in cliente_nombre %}
+        <p>{{ cliente}}</p>
+    {% endfor %}
+
+    <h2>Cliente nacimiento</h2>
+    {% for cliente in cliente_nacimiento %}
+        <p>{{ cliente}}</p>
+    {% endfor %}
+    
+    <h2>Cliente país de origen null</h2>
+    {% for cliente in cliente_pais %}
+        <p>{{ cliente}}</p>
+    {% endfor %}
+
+{% endblock contenido %}

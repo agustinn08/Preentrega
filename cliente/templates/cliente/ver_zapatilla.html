@@ -1,0 +1,12 @@
+{% extends 'cliente/index.html' %} 
+
+{% block contenido %}
+    {% for zapatilla in Zapatilla %}
+        <h4>{{zapatilla.nombre}}</h4>
+        <p>{{zapatilla.modelo}}</p>
+        <p>{{zapatilla.marca}}</p>
+        <p>{{zapatilla.talle}}</p>
+    {% endfor %}
+{% endblock contenido %}{% for zapatilla in Zapatilla %}
+    
+{% endfor %}
