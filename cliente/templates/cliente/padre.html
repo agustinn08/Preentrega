@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Proyecto final</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" type="text/css" />
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{% static 'AppCoder/css/styles.css'  %}" rel="stylesheet" />
+    </head>
+    <body>
+        <!-- Navigation-->
+        <nav class="navbar navbar-light bg-light static-top">
+            <div class="container">
+                <a class="navbar-brand" href="/cliente/index/">Inicio</a>
+                <a class="navbar-brand" href="/cliente/zapatilla/">Crear zapatilla</a>
+                <a class="navbar-brand" href="/cliente/zapatilla/agregar_zapatilla">agregar zapatilla</a>
+                <a class="navbar-brand" href="/cliente/zapatilla/ver_zapatilla">ver zapatilla</a>
+                <a class="navbar-brand" href="/cliente/zapatilla/actualizar_zapatilla">actualizar zapatilla</a>
+                <a class="navbar-brand" href="/cliente/zapatilla/eliminar_zapatilla">actualizar zapatilla</a>
+                <a class="navbar-brand" href="/cliente/cliente/">crear cliente</a>
+                
+
+
+
+                {% if user.is_authenticated %}
+                    <span class="navbar-text">{{ user.username }}</span>
+                    <a class="navbar-brand" href="{% url 'cliente:logout' %}">Logout</a>
+                {% else %}
+                    <a class="navbar-brand" href="{% url 'cliente:login' %}">Login</a>
+                    <a class="navbar-brand" href="{% url 'cliente:registro' %}">Registrar usuario</a>
+                {% endif %}

@@ -1,0 +1,32 @@
+
+{% extends 'core/base.html' %}
+
+{% block contenido_titulo %}
+    PRODUCTO
+{% endblock contenido_titulo %}
+
+{% block contenido %}
+
+    {% for i in zapatilla %}
+        <h2>{{ i.nombre }}</h2>
+        <p>{{ i.modelo }}</p>
+        {% if i.marca %}
+            <p>{{ i.marca }}</p>
+        {% else %}
+            <p>No se agregó la marca de la zapatilla</p>
+        {% endif %}
+        {% if i.talle %}
+            <p>{{ i.talle }}</p>
+        {% else %}
+            <p>No está registrado el talle</p>
+        {% endif %}
+        
+        {# Agrega tu formulario aquí #}
+        <form method="POST" action="">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Actualizar Zapatilla</button>
+        </form>
+    {% endfor %}
+
+{% endblock contenido %}

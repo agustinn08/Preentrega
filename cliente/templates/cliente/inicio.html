@@ -1,0 +1,10 @@
+<!-- cliente/templates/cliente/inicio.html -->
+{% extends 'core/base.html' %}
+
+{% block content %}
+  <h2>Bienvenido</h2>
+  {% if mensaje %}
+    <p>{{ mensaje }}</p>
+  {% endif %}
+  <!-- Otro contenido de la página de inicio si es necesario -->
+{% endblock %}

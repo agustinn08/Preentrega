@@ -1,0 +1,11 @@
+{% extends 'core:base.html' %}
+
+{% block content %}
+  <h2>Eliminar Zapatilla</h2>
+  <p>¿Estás seguro de que quieres eliminar la zapatilla '{{ zapatilla.nombre }}'?</p>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit">Sí, Eliminar</button>
+  </form>
+  <a href="{% url 'cliente:ver_zapatillas' %}">Cancelar</a>
+{% endblock %}

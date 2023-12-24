@@ -1,0 +1,20 @@
+
+
+
+{% block contenido %}
+    <!-- Contenido específico de la plantilla hija -->
+    <form method="post" action="{% url 'cliente:registro' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Registrarse</button>
+    </form>
+    {% for field in form %}
+        <div class="form-field">
+            {{ field.label_tag }}
+            {{ field }}
+        </div>
+    {% endfor %}
+    {% if mensaje %}
+        <p>{{ mensaje }}</p>
+    {% endif %}
+{% endblock %}

@@ -1,13 +1,11 @@
-{% extends 'cliente/index.html' %}
+{% extends 'core/base.html' %}
 
-{% block contenido_titulo %}
-    AGREGAR ZAPATILLA
-{% endblock contenido_titulo %}
-
-{% block contenido %}
-<form method="post">
+{% block content %}
+  <h2>Agregar Zapatilla</h2>
+  <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
-    <p><button type="submit">Agregar</button></p>
-</form>
-{% endblock  %}
+    <button type="submit">Agregar Zapatilla</button>
+  </form>
+{% endblock %}
+

@@ -5,11 +5,94 @@
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link" href="{% url 'cliente:login' %}">Iniciar Sesion</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'cliente:registro' %}">Registrarse</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'cliente:logout' %}">logout</a></li>
                 <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'core:index' %}">Inicio</a></li>
                 <li class="nav-item"><a class="nav-link" href="{% url 'core:about' %}">Nosotros</a></li>
                 <li class="nav-item"><a class="nav-link" href="{% url 'cliente:index' %}">Cliente</a></li>
-                <li class="nav-item"><a class="nav-link" href="{% url 'producto:index' %}">Producto</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'cliente:crear_zapatilla' %}">zapatillas</a></li>
+                
+                <!-- <div class="d-flex justify-content-between w-100"></div>
+                <div>{%if not user.is_autenticated%}
+                        <a class="navbar-brand btn" href="{% url 'cliente:login'%}">Iniciar Sesion</a>
+                     {% endif %}   
+
+                </div>
+                <div class="text-right">
+                    {%if not user.is_autenticated%}
+                    <a class="navbar-brand btn" href="{% url 'cliente:login'%}">Iniciar Sesion</a>
+                 {% endif %}   
+                  -->
+                </div>
+            </div>
+                
             </ul>
         </div>
     </div>
 </nav>
+
+<p><a class="btn btn-primary" style="background-color: #3498db;" href=""
+
+    {% load static %}    
+    <!-- Responsive navbar-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container px-5">
+        <a class="navbar-brand" href="#!">dexter store</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <!-- ... Otras opciones de menú ... -->
+    
+                <!-- Opción para agregar zapatillas -->
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="modal" data-bs-target="#agregarZapatillaModal" style="cursor: pointer">Agregar Zapatilla</a>
+                </li>
+
+           
+             {% load static %}
+
+                <!-- Mostrar zapatillas existentes -->
+                <ul>
+                    {% for zapatilla in zapatillas %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="#!">
+                            {% if zapatilla.imagen_url %}
+                                <img src="{{ zapatilla.imagen_url }}" alt="{{ zapatilla.nombre }}" width="30" height="30">
+                            {% else %}
+                                <img src="{% static 'images/default_image.jpg' %}" alt="Imagen predeterminada" width="30" height="30">
+                            {% endif %}
+                            <div>
+                                <p>Talle: {{ zapatilla.talle }}</p>
+                                <p>Modelo: {{ zapatilla.modelo }}</p>
+                                <p>Nombre: {{ zapatilla.nombre }}</p>
+                                <p>Marca: {{ zapatilla.marca }}</p>
+                            </div>
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+                
+        </div>
+    </div>
+</nav>
+    <!-- Modal para agregar zapatillas -->
+    <div class="modal fade" id="agregarZapatillaModal" tabindex="-1" aria-labelledby="agregarZapatillaModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="agregarZapatillaModalLabel">Agregar Zapatilla</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Formulario para agregar zapatillas -->
+                    <form method="post" enctype="multipart/form-data" action="{% url 'cliente:crear_zapatilla' %}">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit" class="btn btn-primary">Agregar Zapatilla</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
